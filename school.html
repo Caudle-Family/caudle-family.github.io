@@ -1,6 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School &ndash; Caudle Family</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-<h1>It's alive!</h1>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Caudle Family</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/school.html">School</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Password gate (visible until correct password entered) -->
+  <div id="password-gate" class="password-gate">
+    <div class="password-box">
+      <div class="lock-icon">&#x1F512;</div>
+      <h2>Protected Page</h2>
+      <p class="subtitle">Enter the family password to continue.</p>
+      <form id="password-form" class="password-form">
+        <input type="password" id="password-input" placeholder="Password" autocomplete="off" autofocus>
+        <button type="submit">Unlock</button>
+      </form>
+      <p id="password-error" class="password-error">Incorrect password. Please try again.</p>
+    </div>
+  </div>
+
+  <!-- Encrypted content (decrypted client-side when password is correct) -->
+  <div id="protected-content" class="protected-content" data-encrypted="gR2fKgpVqBOpZNv0P0TI0w==:ifataTJn6mVbCRLG:4F/eMTPOecpyWSEU6X8sQs7DOh4VC5vZ7HR76UB3PCrEkwAC9AoHaQl62djqmwadf+Eg/meo13UhfDzqlyIs3nMiXxmfktM9xkQha6sc3/XFo00i2nSwUhcgZdAaRGYpQ1iV2QtbpxUXJ3rVz5yMYiquMuOJBs1f3Wt+8OW4TAJLNUGLrSQ52Qo3UmEBDTCVJ5nrrTLsU269myNXcb/ok+Cw+yLsGkHkkkruJ3jsgH+jvSuClakiUXY/+b8M1FAE6yqwJwE08Ik5+FKGLjovfh+fiKL23rt8nycNCoY97daCDxvgyKQifRMfLusJWewOlIOMMwV8X5LY5w1RNCnsDmsV2HBerbmfFTmJ59bCPInJ2G/fWWXVFXAVB9huPJzwlvPtC/MzYz2A3gWCrIvNhrkLgIeuiu1LUGBZj20zeOhc3jhPc9d0tGJosEC3y2xhhLhHYVkuu3CULMl7af2WqQ9M71afK+DGxBzeAgX3n6PvoWFh+8I1nEY9PUcAeS4vfbnXfY7rq8pI1wIYA1GzoralbQ1TUf+z71EUKGOY1YsHst6nOKbNqpcadCv1nH6MS8KUlnY2vy1oiEWLlQe2gr3zItE60HJLOj0EFMPIIIfGGmt4/dheEj80xghMiHeyxY40Pt+a6OjNdgkEo0JbyTCSupqGYG6ggLTdK4fhqbCiv/NcItXg2m1ysmoSTvFGJ1vY2mStNlNQEiDCyNI5iMy/+oNJnAZ24QpcvTZ6ETrvxXXUcasXqzVDL+F2uskeT6kTCCu2ByHQsQ0ql3sW+xpBNjFvP5yqhADOA+0T2u+wUXI=">
+  </div>
+
+  <footer class="footer" style="display:none" id="page-footer">
+    <p>&copy; <span id="year"></span> The Caudle Family</p>
+  </footer>
+
+  <script src="/js/protect.js"></script>
+  <script>
+    // Show footer once unlocked
+    const observer = new MutationObserver(function () {
+      const el = document.getElementById('protected-content');
+      if (el && el.classList.contains('unlocked')) {
+        document.getElementById('page-footer').style.display = '';
+        document.getElementById('year').textContent = new Date().getFullYear();
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.getElementById('protected-content'), { attributes: true });
+  </script>
 </body>
 </html>

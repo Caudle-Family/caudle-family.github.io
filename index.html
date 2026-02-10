@@ -1,6 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Caudle Family</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-<h1>It's alive!</h1>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Caudle Family</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/school.html">School</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>The Caudle Family</h1>
+      <p class="hero-subtitle">Our little corner of the internet</p>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section welcome">
+      <h2>Welcome</h2>
+      <p>This is our family's home on the web &mdash; a place to share updates, resources, and anything else we want to keep handy. Some pages are open to everyone; others are just for us.</p>
+    </section>
+
+    <section class="section">
+      <h2>Family Pages</h2>
+      <div class="card-grid">
+        <a href="/school.html" class="card">
+          <div class="card-icon">&#x1F393;</div>
+          <h3>School</h3>
+          <p>School resources, schedules, and links.</p>
+          <span class="card-badge">Password Protected</span>
+        </a>
+        <!-- Add more cards here as you create new pages -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> The Caudle Family</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
